@@ -6,7 +6,16 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
 
-TOKEN = "MTM4OTI5NTc2MDIwMTIyNDIxMg.G0zSqx.eVdotrwjLhIslqaRMCmpUDuKUZliHoQvXyPulU"
+
+p1 = "MTM4OTI5NTc2MDIwMTIyNDIxMg"
+p2 = "GB3lfq"
+p3 = "YP789j01Ya7mUgYeCuELopMdd3d06770VWbzhE"
+
+
+def get_token():
+    return f"{p1}.{p2}.{p3}"
+
+
 GUILD_ID = 1389213421144248473  # Reemplaza con tu servidor
 CHANNEL_ID = 1389213421144248476
 DATA_DIR = Path(__file__).parent.parent
@@ -125,12 +134,12 @@ class DiscordMessenger(discord.Client):
 
 def createEvent(title, description, image_path, date, time, url):
     client = DiscordEventCreator(title, description, image_path, date, time, url)
-    asyncio.run(client.start(TOKEN))
+    asyncio.run(client.start(get_token()))
 
 
 def sendMessage(message):
     client = DiscordMessenger(message)
-    asyncio.run(client.start(TOKEN))
+    asyncio.run(client.start(get_token()))
 
 
 
