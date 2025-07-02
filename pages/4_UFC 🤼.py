@@ -4,10 +4,34 @@ from datetime import datetime
 from collections import defaultdict
 import streamlit as st
 from bots.event_creator import sendMessage
+from github import Github
+
+from github import Github
+import streamlit as st
+import json
+
+@st.cache_resource
+def get_repo():
+    token = st.secrets["GITHUB_TOKEN"]
+    repo_name = st.secrets["REPO_NAME"]
+    return Github(token).get_repo(repo_name)
 
 def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+    repo = get_repo()
+    try:
+        contents = repo.get_contents(path)
+        repo.update_file(
+            path,
+            f"Update {path}",
+            json.dumps(data, indent=4, ensure_ascii=False),
+            contents.sha
+        )
+    except Exception:  # Archivo no existe
+        repo.create_file(
+            path,
+            f"Create {path}",
+            json.dumps(data, indent=4, ensure_ascii=False)
+        )
 
 
 # ───────── Config básica ──────────
@@ -23,7 +47,16 @@ STAKE_UNIT = 10
 ROUND_BONUS = 1.20  # +20 %
 METHOD_BONUS = 1.10  # +10 %
 
-load_json = lambda p, d={}: json.loads(p.read_text("utf-8")) if p.exists() else d
+
+def load_json(path, default={}):
+    repo = get_repo()
+    try:
+        contents = repo.get_contents(path)
+        return json.loads(contents.decoded_content.decode("utf-8"))
+    except Exception:
+        return default
+
+
 events_data = load_json(EVENTS_FILE, {})
 ufc_events = events_data.get("ufc", [])
 

@@ -39,21 +39,28 @@ st.set_page_config(
     layout="centered",
 )
 
-DATA_DIR = Path(__file__).parent
-USERS_FILE = DATA_DIR / "users.json"
+@st.cache_resource
+def get_repo():
+    token = st.secrets["GITHUB_TOKEN"]
+    repo_name = st.secrets["REPO_NAME"]
+    return Github(token).get_repo(repo_name)
 
+USERS_FILE = "users.json"  # <- Solo el nombre del archivo en el repo
 
 # ────────────────────────────────
 # Helpers
 # ────────────────────────────────
 
 def load_users() -> dict:
-    """Carga el diccionario de usuarios."""
+    """Carga el diccionario de usuarios desde GitHub."""
     try:
-        with USERS_FILE.open("r", encoding="utf-8") as fp:
-            return json.load(fp)
-    except FileNotFoundError:
+        repo = get_repo()
+        contents = repo.get_contents(USERS_FILE)
+        return json.loads(contents.decoded_content.decode("utf-8"))
+    except Exception:
         return {}
+
+
 
 
 def check_credentials(username: str, password: str) -> bool:
