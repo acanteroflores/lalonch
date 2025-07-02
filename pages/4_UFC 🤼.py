@@ -5,7 +5,6 @@ from collections import defaultdict
 import streamlit as st
 from bots.event_creator import sendMessage
 
-
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
