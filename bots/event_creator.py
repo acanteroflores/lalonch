@@ -7,9 +7,9 @@ from pathlib import Path
 import json
 
 
-p1 = "MTM4OTI5NTc2MDIwMTIyNDIxMg"
-p2 = "GB3lfq"
-p3 = "YP789j01Ya7mUgYeCuELopMdd3d06770VWbzhE"
+p1 = "MTM4OTI5NTc2MDIwMTIyNDIxMg.G"
+p2 = "2hP_8.OXQ2TqMr-x0eGvjnd7B"
+p3 = "0deg5LH2BEx_o4Tc7D8"
 
 
 def get_token():
