@@ -37,7 +37,7 @@ def obtener_luchadores_para_combate(bets_data, fight_name):
 st.set_page_config("Editor de Datos")
 st.title("🛠️ Editor de JSONs")
 
-if st.session_state.user != "Thony":
+if st.session_state.user != "Thony" or "Artesuave":
     st.warning("⚠️ Acceso denegado. Redirigiendo a tu perfil...")
     st.switch_page("/Users/thonyshub/PycharmProjects/lonch/pages/1 Profile 👤.py")
 

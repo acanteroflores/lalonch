@@ -7,13 +7,7 @@ from pathlib import Path
 import json
 
 
-p1 = "MTM4OTI5NTc2MDIwMTIyNDIxMg.G"
-p2 = "2hP_8.OXQ2TqMr-x0eGvjnd7B"
-p3 = "0deg5LH2BEx_o4Tc7D8"
-
-
-def get_token():
-    return f"{p1}.{p2}.{p3}"
+TOKEN = st.secrets["DISCORD_TOKEN"]
 
 
 GUILD_ID = 1389213421144248473  # Reemplaza con tu servidor
@@ -134,12 +128,12 @@ class DiscordMessenger(discord.Client):
 
 def createEvent(title, description, image_path, date, time, url):
     client = DiscordEventCreator(title, description, image_path, date, time, url)
-    asyncio.run(client.start(get_token()))
+    asyncio.run(client.start(TOKEN))
 
 
 def sendMessage(message):
     client = DiscordMessenger(message)
-    asyncio.run(client.start(get_token()))
+    asyncio.run(client.start(TOKEN))
 
 
 
