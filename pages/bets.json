@@ -1,0 +1,235 @@
+{
+    "ufc": [
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Max Holloway vs Dustin Poirier",
+            "red": {
+                "fighter": "Max Holloway",
+                "odds": 1.38
+            },
+            "blue": {
+                "fighter": "Dustin Poirier",
+                "odds": 1.39
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Marvin Vettori vs Brendan Allen",
+            "red": {
+                "fighter": "Marvin Vettori",
+                "odds": 1.88
+            },
+            "blue": {
+                "fighter": "Brendan Allen",
+                "odds": 1.44
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Neil Magny vs Gunnar Nelson",
+            "red": {
+                "fighter": "Neil Magny",
+                "odds": 1.37
+            },
+            "blue": {
+                "fighter": "Gunnar Nelson",
+                "odds": 1.38
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Amanda Ribas vs Tabatha Ricci",
+            "red": {
+                "fighter": "Amanda Ribas",
+                "odds": 1.55
+            },
+            "blue": {
+                "fighter": "Tabatha Ricci",
+                "odds": 1.65
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Kyler Phillips vs Vinicius Oliveira",
+            "red": {
+                "fighter": "Kyler Phillips",
+                "odds": 1.44
+            },
+            "blue": {
+                "fighter": "Vinicius Oliveira",
+                "odds": 1.56
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Adam Fugitt vs Islam Dulatov",
+            "red": {
+                "fighter": "Adam Fugitt",
+                "odds": 1.42
+            },
+            "blue": {
+                "fighter": "Islam Dulatov",
+                "odds": 1.43
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Jimmy Crute vs Marcin Prachnio",
+            "red": {
+                "fighter": "Jimmy Crute",
+                "odds": 1.49
+            },
+            "blue": {
+                "fighter": "Marcin Prachnio",
+                "odds": 1.79
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Ikram Aliskerov vs Brunno Ferreira",
+            "red": {
+                "fighter": "Ikram Aliskerov",
+                "odds": 1.76
+            },
+            "blue": {
+                "fighter": "Brunno Ferreira",
+                "odds": 1.6
+            }
+        },
+        {
+            "fight": "UFC 318: Holloway vs. Poirier III: Carli Judice vs Nicolle Caliari",
+            "red": {
+                "fighter": "Carli Judice",
+                "odds": 1.9
+            },
+            "blue": {
+                "fighter": "Nicolle Caliari",
+                "odds": 1.51
+            }
+        },
+        {
+            "fight": "UFC Fight Night: Whittaker vs Reinier de Ridder: Robert Whittaker vs Reinier de Ridder",
+            "red": {
+                "fighter": "Robert Whittaker",
+                "odds": 1.68
+            },
+            "blue": {
+                "fighter": "Reinier de Ridder",
+                "odds": 1.8
+            }
+        },
+        {
+            "fight": "UFC Fight Night: Whittaker vs Reinier de Ridder: Amanda Ribas vs Tabatha Ricci",
+            "red": {
+                "fighter": "Amanda Ribas",
+                "odds": 1.39
+            },
+            "blue": {
+                "fighter": "Tabatha Ricci",
+                "odds": 1.43
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Amir Albazi vs Tatsuro Taira",
+            "red": {
+                "fighter": "Amir Albazi",
+                "odds": 1.59
+            },
+            "blue": {
+                "fighter": "Tatsuro Taira",
+                "odds": 1.65
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Karol Rosa vs Nora Cornolle",
+            "red": {
+                "fighter": "Karol Rosa",
+                "odds": 1.74
+            },
+            "blue": {
+                "fighter": "Nora Cornolle",
+                "odds": 1.58
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Rodolfo Vieira vs Tresean Gore",
+            "red": {
+                "fighter": "Rodolfo Vieira",
+                "odds": 1.48
+            },
+            "blue": {
+                "fighter": "Tresean Gore",
+                "odds": 1.54
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Andre Lima vs Felipe Bunes",
+            "red": {
+                "fighter": "Andre Lima",
+                "odds": 1.69
+            },
+            "blue": {
+                "fighter": "Felipe Bunes",
+                "odds": 1.34
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Piera Rodriguez vs Ketlen Souza",
+            "red": {
+                "fighter": "Piera Rodriguez",
+                "odds": 1.89
+            },
+            "blue": {
+                "fighter": "Ketlen Souza",
+                "odds": 1.87
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Nick Klein vs Andrey Pulyaev",
+            "red": {
+                "fighter": "Nick Klein",
+                "odds": 1.3
+            },
+            "blue": {
+                "fighter": "Andrey Pulyaev",
+                "odds": 1.38
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Azamat Bekoev vs Torrez Finney",
+            "red": {
+                "fighter": "Azamat Bekoev",
+                "odds": 1.85
+            },
+            "blue": {
+                "fighter": "Torrez Finney",
+                "odds": 1.79
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Chris Duncan vs Mateusz Rebecki",
+            "red": {
+                "fighter": "Chris Duncan",
+                "odds": 1.37
+            },
+            "blue": {
+                "fighter": "Mateusz Rebecki",
+                "odds": 1.34
+            }
+        },
+        {
+            "fight": "UFC Vegas 108: Albazi vs Taira: Danny Silva vs Kevin Vallejos",
+            "red": {
+                "fighter": "Danny Silva",
+                "odds": 1.79
+            },
+            "blue": {
+                "fighter": "Kevin Vallejos",
+                "odds": 1.36
+            }
+        },
+        {
+            "fight": "UFC 319: du Plessis vs Chimaev: Dricus du Plessis vs Khamzat Chimaev",
+            "red": {
+                "fighter": "Dricus du Plessis",
+                "odds": 1.63
+            },
+            "blue": {
+                "fighter": "Khamzat Chimaev",
+                "odds": 1.6
+            }
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "ufc": [
+        {
+            "date": "2025-07-03",
+            "event": "Thony vs Unai",
+            "location": "La Lonch",
+            "time": "18:00 ET (prelims), 22:00 ET (main card)",
+            "fights": [
+                "Unai vs Thony",
+                "Unai vs Unai",
+                "Admin vs Safi"
+            ]
+        },
+        {
+            "date": "2025-07-03",
+            "event": "Thony vs Unai",
+            "location": "La Lonch",
+            "time": "18:00 ET (prelims), 22:00 ET (main card)",
+            "fights": [
+                "Unai vs Thony",
+                "Unai vs Unai",
+                "Admin vs Safi"
+            ]
+        },
+        {
+            "date": "2025-07-03",
+            "event": "Prueba",
+            "location": "Nose",
+            "time": "20:00 ET (prelims), 22:00 ET (main card)",
+            "fights": [
+                "Yo vs El",
+                "a vs b",
+                "vl vs ja",
+                "cesar vs Millan"
+            ]
+        },
+        {
+            "date": "2025-07-03",
+            "event": "DEMO",
+            "location": "DEMO",
+            "time": "21:00 ET (prelims), 22:00 ET (main card)",
+            "fights": [
+                "1 vs 2",
+                "3 vs 4",
+                "4 vs 5",
+                "5 vs 6"
+            ]
+        }
+    ]
+}

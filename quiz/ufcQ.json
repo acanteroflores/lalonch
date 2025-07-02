@@ -1,0 +1,117 @@
+[
+  {
+    "pregunta": "¿Quién sometió a Ken Shamrock en el torneo inaugural UFC 1 (1993), demostrando la efectividad del jiu-jitsu brasileño?",
+    "opciones": ["Dan Severn", "Royce Gracie", "Mark Coleman"],
+    "respuesta_correcta": "Royce Gracie"
+  },
+  {
+    "pregunta": "En UFC 4 (1994), ¿qué luchador venció a Dan Severn tras más de 15 minutos de combate?",
+    "opciones": ["Ken Shamrock", "Oleg Taktarov", "Royce Gracie"],
+    "respuesta_correcta": "Royce Gracie"
+  },
+  {
+    "pregunta": "¿Quién protagonizó uno de los regresos más épicos al derrotar a Frank Trigg en UFC 52 (2005)?",
+    "opciones": ["Matt Hughes", "Pat Miletich", "Georges St-Pierre"],
+    "respuesta_correcta": "Matt Hughes"
+  },
+  {
+    "pregunta": "En UFC 66 (2006), ¿qué peleador noqueó a Tito Ortiz defendiendo el título semipesado?",
+    "opciones": ["Forrest Griffin", "Chuck Liddell", "Randy Couture"],
+    "respuesta_correcta": "Chuck Liddell"
+  },
+  {
+    "pregunta": "¿Quién venció a Matt Hughes en su trilogía (UFC 79, 2007) para consagrarse como campeón wélter?",
+    "opciones": ["Carlos Condit", "Georges St-Pierre", "BJ Penn"],
+    "respuesta_correcta": "Georges St-Pierre"
+  },
+  {
+    "pregunta": "En UFC 94 (2009), ¿qué luchador dominó a BJ Penn en su esperada revancha?",
+    "opciones": ["Anderson Silva", "Georges St-Pierre", "Jon Fitch"],
+    "respuesta_correcta": "Georges St-Pierre"
+  },
+  {
+    "pregunta": "¿Quién fue el primero en noquear a Antonio Rodrigo Nogueira, logrando la hazaña en UFC 92 (2008)?",
+    "opciones": ["Junior Dos Santos", "Cain Velasquez", "Frank Mir"],
+    "respuesta_correcta": "Frank Mir"
+  },
+  {
+    "pregunta": "En UFC 117 (2010), Anderson Silva sometió en el último minuto a…",
+    "opciones": ["Dan Henderson", "Chael Sonnen", "Vitor Belfort"],
+    "respuesta_correcta": "Chael Sonnen"
+  },
+  {
+    "pregunta": "La mítica patada frontal a la cara en UFC 126 (2011) fue obra de…",
+    "opciones": ["Chris Weidman", "Anderson Silva", "Lyoto Machida"],
+    "respuesta_correcta": "Anderson Silva"
+  },
+  {
+    "pregunta": "¿Quién fue el rival de Robbie Lawler en la sangrienta guerra de UFC 189 (2015)?",
+    "opciones": ["Nick Diaz", "Carlos Condit", "Rory MacDonald"],
+    "respuesta_correcta": "Rory MacDonald"
+  },
+  {
+    "pregunta": "¿Qué peleador noqueó a José Aldo en solo 13 segundos durante UFC 194 (2015)?",
+    "opciones": ["Max Holloway", "Conor McGregor", "Alexander Volkanovski"],
+    "respuesta_correcta": "Conor McGregor"
+  },
+  {
+    "pregunta": "En UFC 205 (2016), ¿quién se convirtió en el primer doble campeón simultáneo al vencer a Eddie Álvarez?",
+    "opciones": ["Daniel Cormier", "Henry Cejudo", "Conor McGregor"],
+    "respuesta_correcta": "Conor McGregor"
+  },
+  {
+    "pregunta": "¿Quién sometió a Conor McGregor y desató el caos posterior a UFC 229 (2018)?",
+    "opciones": ["Dustin Poirier", "Khabib Nurmagomedov", "Nate Diaz"],
+    "respuesta_correcta": "Khabib Nurmagomedov"
+  },
+  {
+    "pregunta": "En UFC 261 (2021), ¿qué campeón noqueó a Jorge Masvidal con un derechazo brutal?",
+    "opciones": ["Kamaru Usman", "Colby Covington", "Tyron Woodley"],
+    "respuesta_correcta": "Kamaru Usman"
+  },
+  {
+    "pregunta": "¿Quién consiguió el ‘head-kick’ que noqueó a Kamaru Usman en UFC 278 (2022)?",
+    "opciones": ["Belal Muhammad", "Leon Edwards", "Gilbert Burns"],
+    "respuesta_correcta": "Leon Edwards"
+  },
+  {
+    "pregunta": "¿Qué luchadora inició su reinado al vencer a Miesha Tate en UFC 200 (2016)?",
+    "opciones": ["Valentina Shevchenko", "Amanda Nunes", "Holly Holm"],
+    "respuesta_correcta": "Amanda Nunes"
+  },
+  {
+    "pregunta": "El KO más rápido en la historia de UFC (5 segundos, UFC 239) fue obra de…",
+    "opciones": ["Stephen Thompson", "Francis Ngannou", "Jorge Masvidal"],
+    "respuesta_correcta": "Jorge Masvidal"
+  },
+  {
+    "pregunta": "¿Quién fue el rival de Justin Gaethje en la brutal guerra de UFC 268 (2021)?",
+    "opciones": ["Michael Chandler", "Tony Ferguson", "Charles Oliveira"],
+    "respuesta_correcta": "Michael Chandler"
+  },
+  {
+    "pregunta": "En UFC 285 (2023), ¿qué excampeón regresó para someter a Ciryl Gane y coronarse en los pesos pesados?",
+    "opciones": ["Stipe Miocic", "Francis Ngannou", "Jon Jones"],
+    "respuesta_correcta": "Jon Jones"
+  },
+  {
+    "pregunta": "Durante UFC 300 (2024), ¿quién noqueó a Jamahal Hill para llevarse el título semipesado?",
+    "opciones": ["Alex Pereira", "Glover Teixeira", "Jan Błachowicz"],
+    "respuesta_correcta": "Alex Pereira"
+  },
+  {
+    "pregunta": "¿Quién se prendió un porro en una rueda de prensa de UFC?",
+    "opciones": ["Sean O'Malley", "Nick Diaz", "Nate Diaz"],
+    "respuesta_correcta": "Nate Diaz"
+  },
+  {
+    "pregunta": "¿A qué edad se convirtió Jon Jones en campeón de UFC?",
+    "opciones": ["21", "23", "25"],
+    "respuesta_correcta": "23"
+  },
+  {
+    "pregunta": "¿En qué evento de UFC venció Khabib Nurmagomedov a Conor McGregor?",
+    "opciones": ["UFC 205", "UFC 229", "UFC 217"],
+    "respuesta_correcta": "UFC 229"
+  }
+]

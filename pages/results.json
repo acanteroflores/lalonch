@@ -1,0 +1,68 @@
+{
+    "UFC 318: Holloway vs. Poirier III": {
+        "Max Holloway vs Dustin Poirier": {
+            "winner_corner": "red",
+            "winner_name": "Red",
+            "round": "R2",
+            "method": "KO",
+            "resolved": true
+        },
+        "Marvin Vettori vs Brendan Allen": {
+            "winner_corner": "red",
+            "winner_name": "Red",
+            "round": "R4",
+            "method": "TKO",
+            "resolved": true
+        },
+        "Neil Magny vs Gunnar Nelson": {
+            "winner_corner": "red",
+            "winner_name": "Red",
+            "round": "R4",
+            "method": "KO",
+            "resolved": true
+        },
+        "Amanda Ribas vs Tabatha Ricci": {
+            "winner_corner": "blue",
+            "winner_name": "Blue",
+            "round": "R2",
+            "method": "Decisión",
+            "resolved": true
+        },
+        "Kyler Phillips vs Vinicius Oliveira": {
+            "winner_corner": "red",
+            "winner_name": "Red",
+            "round": "R4",
+            "method": "Sumisión",
+            "resolved": true
+        },
+        "Adam Fugitt vs Islam Dulatov": {
+            "winner_corner": "blue",
+            "winner_name": "Blue",
+            "round": "R3",
+            "method": "TKO",
+            "resolved": true
+        },
+        "Jimmy Crute vs Marcin Prachnio": {
+            "winner_corner": "red",
+            "winner_name": "Red",
+            "round": "R2",
+            "method": "TKO",
+            "resolved": true
+        },
+        "Ikram Aliskerov vs Brunno Ferreira": {
+            "winner_corner": "blue",
+            "winner_name": "Blue",
+            "round": "R2",
+            "method": "TKO",
+            "resolved": true
+        },
+        "Carli Judice vs Nicolle Caliari": {
+            "winner_corner": "blue",
+            "winner_name": "Blue",
+            "round": "R2",
+            "method": "TKO",
+            "resolved": true
+        },
+        "checked": true
+    }
+}

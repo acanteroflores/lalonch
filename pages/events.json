@@ -1,0 +1,72 @@
+{
+    "ufc": [
+        {
+            "date": "2025-07-19",
+            "event": "UFC 318: Holloway vs. Poirier III",
+            "location": "Smoothie King Center, New Orleans, LA, USA",
+            "time": "18:00 ET (prelims), 22:00 ET (main card)",
+            "fights": [
+                "Max Holloway vs Dustin Poirier",
+                "Marvin Vettori vs Brendan Allen",
+                "Neil Magny vs Gunnar Nelson",
+                "Amanda Ribas vs Tabatha Ricci",
+                "Kyler Phillips vs Vinicius Oliveira",
+                "Adam Fugitt vs Islam Dulatov",
+                "Jimmy Crute vs Marcin Prachnio",
+                "Ikram Aliskerov vs Brunno Ferreira",
+                "Carli Judice vs Nicolle Caliari"
+            ]
+        },
+        {
+            "date": "2025-07-26",
+            "event": "UFC Fight Night: Whittaker vs Reinier de Ridder",
+            "location": "Etihad Arena, Abu Dhabi, UAE",
+            "time": "TBC",
+            "fights": [
+                "Robert Whittaker vs Reinier de Ridder",
+                "Movsar Evloev vs Aaron Pico",
+                "Amanda Ribas vs Tabatha Ricci"
+            ]
+        },
+        {
+            "date": "2025-08-02",
+            "event": "UFC Vegas 108: Albazi vs Taira",
+            "location": "UFC Apex, Las Vegas, NV, USA",
+            "time": "18:00 PT (prelims), 21:00 PT (main card)",
+            "fights": [
+                "Amir Albazi vs Tatsuro Taira",
+                "Karol Rosa vs Nora Cornolle",
+                "Rodolfo Vieira vs Tresean Gore",
+                "Andre Lima vs Felipe Bunes",
+                "Piera Rodriguez vs Ketlen Souza",
+                "Nick Klein vs Andrey Pulyaev",
+                "Azamat Bekoev vs Torrez Finney",
+                "Chris Duncan vs Mateusz Rebecki",
+                "Danny Silva vs Kevin Vallejos"
+            ]
+        },
+        {
+            "date": "2025-08-16",
+            "event": "UFC 319: du Plessis vs Chimaev",
+            "location": "United Center, Chicago, IL, USA",
+            "time": "TBC",
+            "fights": [
+                "Dricus du Plessis vs Khamzat Chimaev"
+            ]
+        }
+    ],
+    "csgo": [
+        {
+            "date": "2025-07-14",
+            "match": "NAVI vs Fnatic"
+        },
+        {
+            "date": "2025-07-19",
+            "match": "NinjasInPijamas vs Cloud9"
+        },
+        {
+            "date": "2025-07-30",
+            "match": "FaZe vs Tekila"
+        }
+    ]
+}
