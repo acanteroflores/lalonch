@@ -1,56 +1,67 @@
 import streamlit as st
 import json
 import random
-from pathlib import Path
-import os
-
-DATA_DIR = Path(__file__).parent
-QUESTIONS_FILE = DATA_DIR.parent / "quiz/ufcQ.json"
-USERS_PATH = DATA_DIR / "../users.json"
+from datetime import datetime
 
 
-def cargar_json(path):
-    if not os.path.exists(path):
-        return {}
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+# ────── Funciones GitHub ────── #
+@st.cache_resource
+def get_repo():
+    from github import Github
+    token = st.secrets["GITHUB_TOKEN"]
+    repo_name = st.secrets["REPO_NAME"]
+    return Github(token).get_repo(repo_name)
 
 
-def guardar_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+def load_json(path: str, default: dict = {}):
+    try:
+        contents = get_repo().get_contents(path)
+        return json.loads(contents.decoded_content.decode())
+    except Exception:
+        return default
 
 
-users = cargar_json(USERS_PATH)
+def save_json(path: str, data: dict):
+    repo = get_repo()
+    payload = json.dumps(data, indent=4, ensure_ascii=False)
+    try:
+        contents = repo.get_contents(path)
+        repo.update_file(path, f"Update {path}", payload, contents.sha)
+    except Exception:
+        repo.create_file(path, f"Create {path}", payload)
 
-# ---------- Config básica ----------
+
+# ────── Config básica ────── #
 st.set_page_config(page_title="Quiz UFC", layout="centered")
 st.title("🥊 Quiz Histórico de UFC")
 
-username = st.session_state.get("user")
+USERS_FILE = "users.json"
+QUESTIONS_FILE = "quiz/ufcQ.json"  # desde el disco
 
-# ---------- Carga de preguntas una sola vez ----------
+username = st.session_state.get("user")
+users = load_json(USERS_FILE, {})
+
+# ────── Carga de preguntas (una sola vez) ────── #
 if "preguntas" not in st.session_state:
     with open(QUESTIONS_FILE, "r", encoding="utf-8") as f:
         st.session_state.preguntas = json.load(f)
-    random.shuffle(st.session_state.preguntas)      # baraja 1 vez
-    st.session_state.indice = 0                     # pregunta actual
-    st.session_state.puntuacion = 0                 # aciertos
-    st.session_state.respuesta_mostrada = False     # ya enseñó feedback
-    st.session_state.ultima_correcta = False        # flag de acierto
+    random.shuffle(st.session_state.preguntas)
+    st.session_state.indice = 0
+    st.session_state.puntuacion = 0
+    st.session_state.respuesta_mostrada = False
+    st.session_state.ultima_correcta = False
 
-# Alias cortos
+# Alias útiles
 preguntas = st.session_state.preguntas
 i = st.session_state.indice
 
-# ---------- Quiz en marcha ----------
+# ────── Quiz activo ────── #
 if i < len(preguntas):
     q = preguntas[i]
     st.subheader(f"Pregunta {i + 1} de {len(preguntas)}")
     st.info(f"Puntuación: {st.session_state.puntuacion}")
 
-    # --- FORMULARIO ---
-    with st.form(key=f"form_{i}", clear_on_submit=False):
+    with st.form(key=f"form_{i}"):
         seleccion = st.radio(
             q["pregunta"],
             q["opciones"],
@@ -58,14 +69,12 @@ if i < len(preguntas):
         )
         confirm = st.form_submit_button("✅ Confirmar respuesta")
 
-    # Al pulsar Confirmar:
     if confirm and not st.session_state.respuesta_mostrada:
         st.session_state.ultima_correcta = (seleccion == q["respuesta_correcta"])
         st.session_state.respuesta_mostrada = True
         if st.session_state.ultima_correcta:
             st.session_state.puntuacion += 1
 
-    # --- FEEDBACK + Botón Continuar ---
     if st.session_state.respuesta_mostrada:
         if st.session_state.ultima_correcta:
             st.success("¡Correcto! 🎉")
@@ -77,17 +86,21 @@ if i < len(preguntas):
             st.session_state.respuesta_mostrada = False
             st.rerun()
 
-# ---------- Final del quiz ----------
+# ────── Quiz terminado ────── #
 else:
     st.balloons()
-    if username in users:
-        reward = int(st.session_state.puntuacion) * 75
+    total = st.session_state.puntuacion
+    reward = total * 75
+
+    if username and username in users:
         users[username]["points"] += reward
-        guardar_json(USERS_PATH, users)
+        save_json(USERS_FILE, users)
         st.success(f"✅ ¡{reward} puntos añadidos a {username}!")
     else:
-        st.error("⚠️ No se encontró el usuario en sesión o en la base de datos.")
-    st.success(f"🎯 Quiz completado: {st.session_state.puntuacion}/{len(preguntas)} correctas.")
+        st.warning("⚠️ Usuario no encontrado en sesión o base de datos.")
+
+    st.success(f"🎯 Quiz completado: {total}/{len(preguntas)} correctas.")
+
     if st.button("🔁 Volver a jugar"):
-        del st.session_state.preguntas   # reset total
+        del st.session_state.preguntas
         st.rerun()

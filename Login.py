@@ -1,34 +1,16 @@
 """
-Home / Login page for the Streamlit betting app 🔐🎲
---------------------------------------------------
-• Coloca este archivo en la raíz del proyecto (junto a `pages/4 4_UFC 🤼.py`).
-• Los demás deportes irán dentro de `pages/<deporte>.py` y DEBEN empezar con
-  un chequeo sencillo de sesión para que nadie entre sin loguearse:
+Login page con persistencia en GitHub 🔐🎲
+------------------------------------------
+• Este archivo reemplaza al antiguo Login.py y se conecta con GitHub.
+• El archivo `users.json` vive en el repositorio remoto (no en disco local).
+• Usa los secrets: GITHUB_TOKEN y REPO_NAME en Streamlit Cloud.
 
-    import streamlit as st
-    if "user" not in st.session_state:
-        st.switch_page("Login.py")  # redirige al login
-
-• Los usuarios viven en `users.json` en el mismo directorio:
-  {
-    "thony": {"password": "1234", "points": 1000},
-    "goku":  {"password": "kamehameha", "points": 800}
-  }
-• Contraseñas en texto plano para la demo 🤙 (mete bcrypt si lo subes online).
-
-Run:
-    streamlit run Login.py
 """
 
 from bots.event_creator import sendMessage
-
-
-
-
-import json
-from pathlib import Path
-
 import streamlit as st
+from github import Github
+import json
 
 # ────────────────────────────────
 # Config
@@ -39,28 +21,57 @@ st.set_page_config(
     layout="centered",
 )
 
+USERS_FILE = "users.json"  # Ahora es solo el path dentro del repo
+
+
+# ────────────────────────────────
+# GitHub Helpers
+# ────────────────────────────────
+
 @st.cache_resource
 def get_repo():
     token = st.secrets["GITHUB_TOKEN"]
     repo_name = st.secrets["REPO_NAME"]
     return Github(token).get_repo(repo_name)
 
-USERS_FILE = "users.json"  # <- Solo el nombre del archivo en el repo
+
+def load_json(path, default={}):
+    repo = get_repo()
+    try:
+        contents = repo.get_contents(path)
+        return json.loads(contents.decoded_content.decode("utf-8"))
+    except Exception:
+        return default
+
+
+def save_json(path, data):
+    repo = get_repo()
+    try:
+        contents = repo.get_contents(path)
+        repo.update_file(
+            path,
+            f"Update {path}",
+            json.dumps(data, indent=4, ensure_ascii=False),
+            contents.sha
+        )
+    except Exception:
+        repo.create_file(
+            path,
+            f"Create {path}",
+            json.dumps(data, indent=4, ensure_ascii=False)
+        )
+
 
 # ────────────────────────────────
-# Helpers
+# App Helpers
 # ────────────────────────────────
 
 def load_users() -> dict:
-    """Carga el diccionario de usuarios desde GitHub."""
-    try:
-        repo = get_repo()
-        contents = repo.get_contents(USERS_FILE)
-        return json.loads(contents.decoded_content.decode("utf-8"))
-    except Exception:
-        return {}
+    return load_json(USERS_FILE, {})
 
 
+def save_users(users: dict):
+    save_json(USERS_FILE, users)
 
 
 def check_credentials(username: str, password: str) -> bool:
@@ -102,8 +113,6 @@ else:
 
 st.markdown("---")
 
-st.markdown("---")
-# st.subheader("🆕 Crear cuenta nueva")
 st.info("🆕 Crear cuenta nueva")
 
 with st.expander(" ¿No tienes cuenta? Pincha aquí ✍️"):
@@ -127,11 +136,7 @@ with st.expander(" ¿No tienes cuenta? Pincha aquí ✍️"):
                     "color": new_color,
                     "discord": new_discord
                 }
-                with USERS_FILE.open("w", encoding="utf-8") as f:
-                    json.dump(users, f, indent=4, ensure_ascii=False)
-
+                save_users(users)
                 st.success("✅ Cuenta creada correctamente. ¡Ya puedes iniciar sesión!")
                 sendMessage(f"{new_user} acaba de crearse una cuenta en La Casa de Apuestas 👀")
                 st.rerun()
-
-# st.info("No tienes cuenta? Añade tu usuario directamente al `users.json` ✍️")

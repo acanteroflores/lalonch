@@ -5,16 +5,9 @@ import io
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
+import streamlit as st
 
-p1 = "MTM4OTI5NTc2MDIwMTIyNDIxMg.G"
-p2 = "2hP_8.OXQ2TqMr-x0eGvjnd7B0"
-p3 = "deg5LH2BEx_o4Tc7D8"
-
-
-# TOKEN = st.secrets["DISCORD_TOKEN"]
-def get_token():
-    return f"{p1}.{p2}.{p3}"
-
+TOKEN = st.secrets["DISCORD_TOKEN"]
 
 GUILD_ID = 1389213421144248473  # Reemplaza con tu servidor
 CHANNEL_ID = 1389213421144248476
@@ -134,12 +127,12 @@ class DiscordMessenger(discord.Client):
 
 def createEvent(title, description, image_path, date, time, url):
     client = DiscordEventCreator(title, description, image_path, date, time, url)
-    asyncio.run(client.start(get_token()))
+    asyncio.run(client.start(TOKEN))
 
 
 def sendMessage(message):
     client = DiscordMessenger(message)
-    asyncio.run(client.start(get_token()))
+    asyncio.run(client.start(TOKEN))
 
 
 
