@@ -13,8 +13,6 @@ from bots.event_creator import sendMessage
 
 # ───────────────────────────── GitHub helpers ────────────────────────────── #
 
-
-
 @st.cache_resource
 def get_repo():
     token = st.secrets["GITHUB_TOKEN"]
@@ -45,7 +43,7 @@ def save_json(path: str, data: dict):
 
 # ───────────────────────────── Config básica ────────────────────────────── #
 
-st.set_page_config(page_title="UFC Combinadas 2.0", page_icon="💊", layout="centered")
+st.set_page_config(page_title="👊🏼 UFC", page_icon="💊", layout="centered")
 
 # Los nombres de archivo son *paths* dentro del repo remoto
 EVENTS_FILE = "pages/events.json"
@@ -156,7 +154,7 @@ for idx, fight in enumerate(bets_data):
     if idx == 0:
         st.markdown(
             f"<div style='border:3px solid gold;border-radius:12px;padding:15px;background:#1e1e1e;margin-bottom:20px;'>"
-            f"<h3 style='color:gold;text-align:center;'>🌟 PELEA ESTELAR 🌟</h3>"
+            f"<h3 style='color:gold;text-align:center;'>🌟 COMBATE ESTELAR 🌟</h3>"
             f"<h2 style='text-align:center;color:white;'>🥊 {fid}</h2>"
             f"</div>",
             unsafe_allow_html=True,
@@ -262,6 +260,8 @@ if st.button("🚀 Enviar combinada"):
 
     # 3) Feedback + Discord
     st.success("💥 Combinada enviada. ¡Mucha suerte!")
-    sendMessage(f"🎰 @{st.session_state.user} ha apostado {total_stake} puntos a UFC")
+    discord_user = load_json(users, {})
+    discord_tag = discord_user.get(st.session_state.user, {}).get("discord", st.session_state.user)
+    sendMessage(f"🎰 @{discord_tag} ha apostado {total_stake} puntos a UFC")
     st.session_state.picks.clear()
     st.rerun()

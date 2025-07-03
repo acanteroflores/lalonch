@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import random
 from datetime import datetime
+from bots.event_creator import sendMessage
 
 
 # ────── Funciones GitHub ────── #
@@ -100,6 +101,7 @@ else:
         st.warning("⚠️ Usuario no encontrado en sesión o base de datos.")
 
     st.success(f"🎯 Quiz completado: {total}/{len(preguntas)} correctas.")
+    sendMessage(f"{username} ha completado el Quiz de UFC y ha ganado {reward} Puntos!")
 
     if st.button("🔁 Volver a jugar"):
         del st.session_state.preguntas

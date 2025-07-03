@@ -138,5 +138,5 @@ with st.expander(" ¿No tienes cuenta? Pincha aquí ✍️"):
                 }
                 save_users(users)
                 st.success("✅ Cuenta creada correctamente. ¡Ya puedes iniciar sesión!")
-                sendMessage(f"{new_user} acaba de crearse una cuenta en La Casa de Apuestas 👀")
+                sendMessage(f"{new_discord} acaba de crearse una cuenta en La Casa de Apuestas 👀")
                 st.rerun()
