@@ -1,19 +1,37 @@
 import discord
 import asyncio
-import aiohttp
-import io
+import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-import json
 import streamlit as st
+from github import Github
 
+# ────────────────────────────── SECRETS ───────────────────────────── #
 TOKEN = st.secrets["DISCORD_TOKEN"]
-
-GUILD_ID = 1389213421144248473  # Reemplaza con tu servidor
+GUILD_ID = 1389213421144248473
 CHANNEL_ID = 1389213421144248476
-DATA_DIR = Path(__file__).parent.parent
-USERS_JSON = DATA_DIR / "users.json"
 
+
+# ────────────────────────────── GITHUB I/O ────────────────────────── #
+@st.cache_resource
+def get_repo():
+    token = st.secrets["GITHUB_TOKEN"]
+    repo_name = st.secrets["REPO_NAME"]
+    return Github(token).get_repo(repo_name)
+
+
+def load_json(path: str, default: dict = {}):
+    try:
+        contents = get_repo().get_contents(path)
+        return json.loads(contents.decoded_content.decode())
+    except Exception:
+        return default
+
+
+USERS_PATH = "users.json"  # ← ahora se lee del repo remoto
+
+
+# ──────────────────────── CREAR EVENTOS DISCORD ───────────────────── #
 class DiscordEventCreator(discord.Client):
     def __init__(self, title, description, image_path, date, time, url):
         super().__init__(intents=discord.Intents.default())
@@ -23,44 +41,38 @@ class DiscordEventCreator(discord.Client):
         self.date = date
         self.time = time
         self.url = url
-        self.guild = None
 
     async def on_ready(self):
         print(f"Bot conectado como {self.user}")
-        self.guild = self.get_guild(GUILD_ID)
-
-        if not self.guild:
+        guild = self.get_guild(GUILD_ID)
+        if not guild:
             print("No se encontró el servidor.")
-            await self.close()
+            await self.close();
             return
 
-
-        # Parsear fecha y hora con zona horaria UTC
         try:
             start_dt = datetime.strptime(f"{self.date} {self.time}", "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
             end_dt = start_dt + timedelta(hours=1)
         except ValueError:
-            print("Fecha u hora inválidas")
-            await self.close()
+            print("Fecha u hora inválidas");
+            await self.close();
             return
 
-        # Leer imagen local
         try:
             with open(self.image_path, "rb") as f:
                 image_bytes = f.read()
         except Exception as e:
-            print(f"❌ Error al leer la imagen: {e}")
-            await self.close()
+            print(f"❌ Error al leer la imagen: {e}");
+            await self.close();
             return
 
-        # Crear evento externo con enlace clicable
         try:
-            await self.guild.create_scheduled_event(
+            await guild.create_scheduled_event(
                 name=self.title,
                 description=self.description,
                 start_time=start_dt,
                 end_time=end_dt,
-                location=self.url,  # Enlace clicable en el banner
+                location=self.url,
                 entity_type=discord.EntityType.external,
                 privacy_level=discord.PrivacyLevel.guild_only,
                 image=image_bytes
@@ -72,49 +84,28 @@ class DiscordEventCreator(discord.Client):
         await self.close()
 
 
+# ──────────────────────── ENVIAR MENSAJES DISCORD ─────────────────── #
 class DiscordMessenger(discord.Client):
     def __init__(self, message):
         super().__init__(intents=discord.Intents.default())
         self.message = message
-        self.guild = None
 
     async def on_ready(self):
         print(f"📬 Bot conectado como {self.user}")
         channel = self.get_channel(CHANNEL_ID)
         if not channel:
-            print("❌ Canal no encontrado.")
-            await self.close()
+            print("❌ Canal no encontrado.");
+            await self.close();
             return
 
-        # Cargar users.json
-        try:
-            with open(USERS_JSON, "r") as f:
-                users = json.load(f)
-        except Exception as e:
-            print(f"❌ Error cargando users.json: {e}")
-            await self.close()
-            return
+        users = load_json(USERS_PATH, {})
+        detected_user = next((u for u in users if u.lower() in self.message.lower()), None)
+        color_hex = users.get(detected_user, {}).get("color", "#808080")
+        color_int = int(color_hex.lstrip("#"), 16)
 
-        # Buscar si hay un nombre de usuario en el mensaje
-        detected_user = None
-        for username in users:
-            if username.lower() in self.message.lower():
-                detected_user = username
-                break
-
-        # Obtener color o usar color por defecto
-        color_hex = users[detected_user]["color"] if detected_user else "#808080"
-        color_int = int(color_hex.replace("#", ""), 16)
-
-        # Crear Embed con color
-        embed = discord.Embed(
-            title=f"📢 Nuevo mensaje",
-            description=self.message,
-            color=color_int
-        )
-
+        embed = discord.Embed(title="📢 Nuevo mensaje", description=self.message, color=color_int)
         if detected_user:
-            embed.set_footer(text=f"Mensaje detectado de {detected_user}", icon_url=None)
+            embed.set_footer(text=f"Mensaje detectado de {detected_user}")
 
         try:
             await channel.send(embed=embed)
@@ -125,6 +116,7 @@ class DiscordMessenger(discord.Client):
         await self.close()
 
 
+# ─────────────────────────── FUNCIONES PÚBLICAS ───────────────────── #
 def createEvent(title, description, image_path, date, time, url):
     client = DiscordEventCreator(title, description, image_path, date, time, url)
     asyncio.run(client.start(TOKEN))
@@ -133,6 +125,3 @@ def createEvent(title, description, image_path, date, time, url):
 def sendMessage(message):
     client = DiscordMessenger(message)
     asyncio.run(client.start(TOKEN))
-
-
-
