@@ -209,5 +209,20 @@
             "method": "TKO",
             "resolved": false
         }
+    ],
+    "Thony": [
+        {
+            "timestamp": "2025-07-03T13:00:42.189367",
+            "sport": "ufc",
+            "fight": "Max Holloway vs Dustin Poirier",
+            "corner": "red",
+            "fighter": "Max Holloway",
+            "amount": 90,
+            "odds": 2.71,
+            "round": "R1",
+            "method": "KO",
+            "resolved": false,
+            "won": null
+        }
     ]
 }
