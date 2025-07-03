@@ -5,9 +5,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import streamlit as st
 from github import Github
+import nest_asyncio
+
+nest_asyncio.apply()  # ← Para evitar conflictos con bucles ya activos
+
 
 # ────────────────────────────── SECRETS ───────────────────────────── #
-TOKEN = st.secrets["DISCORD_TOKEN"]
+TOKEN = st.secrets["DOKEN"]
 GUILD_ID = 1389213421144248473
 CHANNEL_ID = 1389213421144248476
 
@@ -124,4 +128,5 @@ def createEvent(title, description, image_path, date, time, url):
 
 def sendMessage(message):
     client = DiscordMessenger(message)
-    asyncio.run(client.start(TOKEN))
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(client.start(TOKEN))
